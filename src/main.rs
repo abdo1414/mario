@@ -1,20 +1,18 @@
-use std::vec;
 
 fn main() {
 
     let arrg = std::env::args();
 
-    let mut i = vec![];
-    for a in arrg {
-        i.push(a)
-    }
+    let i:i32 = arrg.last().unwrap().trim().parse().unwrap_or(0);
 
-    piler(i[1].parse::<i32>().unwrap());
+    
+    piler(i);
 }
 
-fn piler(mut num: i32) {
+fn piler(num: i32) {
+    let mut num = num.clone();
     if num < 0 {
-        panic!("inter a viled intger")
+        panic!("inter a valed intger")
     }    
     loop {
         println!("{}", get_the_wall(num));
@@ -24,8 +22,7 @@ fn piler(mut num: i32) {
             break;
         }
     }
-}
-
+}                                                                                                               
 fn get_the_wall(num:i32) -> String {
   let mut tmp = num;
   let mut brick = String::new();
